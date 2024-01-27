@@ -1,13 +1,55 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+  --backgorund: black;
+  --red: #ee4037;
+  --purple: #262161;
+  --yellow: #fbaf41;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html{
+  
+}
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--backgorund);
+  height: 100vh;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+
+.form--wrapper{
+  font-family: 'Inter', sans-serif;
+  background-color: white;
+  position: absolute; /*Can also be `fixed`*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  /*Solves a problem in which the content is being cut when the div is smaller than its' wrapper:*/
+  max-width: 15%;
+  max-height: fit-content;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.form--header{
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form--elements{
+  padding: 5px;
+  margin-top: 4px;
+  border-radius: 4px;
+}
+
+.main--wrapper h1{
+  color: white;
 }
