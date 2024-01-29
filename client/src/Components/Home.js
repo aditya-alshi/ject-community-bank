@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom"
+import { 
+    Link,
+    Outlet 
+} from "react-router-dom"
 
 export default function Home(){
     return(
@@ -10,7 +13,9 @@ export default function Home(){
                 </Link>
                 <button className="home--header--buttons" id="login--button">Login</button>
             </header>
-            <main className="home--main">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et officia accusantium eaque velit repudiandae quam repellendus enim hic, ut incidunt reiciendis dignissimos nemo! Molestias, rerum iure illo provident non consequatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, debitis!</main>
+            <div className="home--main">
+                <Outlet />
+            </div>
             <footer className="home--footer">
                 <i className="facebook--link">facebook</i>
                 {"|"}

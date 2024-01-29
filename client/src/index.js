@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
-import App from './App';
 import ErrorPage from './Components/ErrorPage';
 import Home from './Components/Home';
 import Form from './Components/Form';
+import Intro from './Components/Intro';
 
 import {
   createBrowserRouter,
@@ -14,19 +14,19 @@ import {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Home />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Intro />
       },
+      {
+        path: '/signup',
+        element: <Form />
+      }
     ]
   },
-  {
-    path: '/signup',
-    element: <Form />
-  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
