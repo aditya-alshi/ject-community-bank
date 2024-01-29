@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Form({displayForm}){
+export default function Form(){
 
     const [formData, setFormData] = React.useState({
         firstName : "",
         lastName: "",
         email : "",
+        password: "",
         phoneNumber: ""
     })
 
     function handleSubmit(event){
-        event.preventDefault()
-        displayForm();
+        event.preventDefault();
+
+        const uri = 'http://localhost:8000/submit'
+
+        fetch(uri, {
+            method: 'POST',
+            headers : {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err=>{
+            console.log("Error: ", err);
+        })
     }
 
     function handleChange(event){
+        event.preventDefault();
         setFormData(prevData=>(
             {
                 ...prevData,
@@ -24,7 +40,7 @@ export default function Form({displayForm}){
     }
 
     return (
-      <form autoComplete='off' className="form--wrapper" onSubmit={handleSubmit}>
+      <form className="form--wrapper" onSubmit={handleSubmit} action='/submit' method='POST'>
         <div className="form--header">
             <h3>Register</h3>
             <p>jcbank</p>
@@ -54,6 +70,14 @@ export default function Form({displayForm}){
           onChange={handleChange}
         />
         <input 
+            name='password'
+            className="form--elements email"
+            type="password" 
+            value={formData.password}
+            placeholder='Enter Password'
+            onChange={handleChange}
+        />
+        <input 
             className="form--elements phone--number"
             type="tel" 
             name="phoneNumber"
@@ -65,7 +89,7 @@ export default function Form({displayForm}){
              type="submit" 
              
              className='form--elements submit--button'
-        >Submit</button>
+        >Register</button>
       </form>
     );
 }

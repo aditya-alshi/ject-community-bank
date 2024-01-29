@@ -5,22 +5,21 @@
   --yellow: #fbaf41;
 }
 
-html{
-  
-}
 body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--backgorund);
+  background-color: white;
   height: 100vh;
   position: relative;
   font-family: 'Inter', sans-serif;
 }
 
+
+
 .form--wrapper{
   font-family: 'Inter', sans-serif;
-  background-color: white;
+  background-color: cornsilk;
   position: absolute; /*Can also be `fixed`*/
   left: 0;
   right: 0;
@@ -37,10 +36,11 @@ body{
 }
 
 .form--header{
+  padding: 0 8px;
   background-color: black;
   color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -50,6 +50,45 @@ body{
   border-radius: 4px;
 }
 
-.main--wrapper h1{
-  color: white;
+
+/* Home */
+
+.home--wrapper{
+  /* padding-left: 10px; */
+  border: 2px solid blue;
+}
+
+.home--header{
+  padding: 0 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  background-color: cornsilk;
+}
+
+.home--header--buttons{
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#signup--button{
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.home--header h1{
+  margin-left: auto;
+}
+
+
+
+.home--wrapper .home--footer{
+  border: 2px solid darkgreen;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  bottom: 0px;
+  margin-bottom: 5px;
+  padding: 10px;
 }
