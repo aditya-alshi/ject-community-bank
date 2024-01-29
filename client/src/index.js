@@ -4,6 +4,7 @@ import './index.css'
 import App from './App';
 import ErrorPage from './Components/ErrorPage';
 import Home from './Components/Home';
+import Form from './Components/Form';
 
 import {
   createBrowserRouter,
@@ -19,8 +20,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }
+      },
     ]
+  },
+  {
+    path: '/signup',
+    element: <Form />
   }
 ])
 

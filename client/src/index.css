@@ -15,8 +15,6 @@ body{
   font-family: 'Inter', sans-serif;
 }
 
-
-
 .form--wrapper{
   font-family: 'Inter', sans-serif;
   background-color: cornsilk;
@@ -54,41 +52,52 @@ body{
 /* Home */
 
 .home--wrapper{
-  /* padding-left: 10px; */
-  border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .home--header{
-  padding: 0 10px;
+  padding: 0 20px;
   margin-bottom: 5px;
   display: flex;
   align-items: center;
   background-color: cornsilk;
+  box-shadow: -5px 0px  15px rgba(0, 0, 0, 0.2);
 }
 
 .home--header--buttons{
   padding: 5px;
   border-radius: 5px;
 }
-
-#signup--button{
+#Link--wrapper--signupButton{
   margin-left: auto;
   margin-right: 5px;
 }
 
-.home--header h1{
-  margin-left: auto;
+#signup--button{
+  padding: 5px;
+  border-radius: 5px;
 }
 
-
+.home--main{
+  /* border: 1px solid black; */
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
 
 .home--wrapper .home--footer{
-  border: 2px solid darkgreen;
-  width: 100%;
+  /* border: 2px solid darkgreen; */
   display: flex;
-  position: absolute;
-  justify-content: space-between;
-  bottom: 0px;
+  justify-content: center;
+  align-items: center;
+  bottom: 2px;
   margin-bottom: 5px;
-  padding: 10px;
+  padding: 20px;
+  box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.home--footer i{
+  cursor: pointer;
 }
