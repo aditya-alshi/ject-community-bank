@@ -13,7 +13,7 @@ export default function Form(){
     function handleSubmit(event){
         event.preventDefault();
 
-        const uri = 'http://localhost:8000/submit'
+        const uri = 'https://jectcommunitybank.onrender.com//submit'
 
         fetch(uri, {
             method: 'POST',
