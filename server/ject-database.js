@@ -7,7 +7,6 @@ module.exports.addDocument = async function(user){
         await client.connect();
         const jcBankdb = client.db('jcBankdb');
         const jcbankCollection = jcBankdb.collection('jcbankCollection')
-
         await jcbankCollection.insertOne(user);
     }catch(e){
         console.log(e);
@@ -17,3 +16,24 @@ module.exports.addDocument = async function(user){
     }
 }
 
+module.exports.getAllPeople = async function(){
+    try{
+        await client.connect();
+        const jcBankdb = client.db('jcBankdb');
+        const jcbankCollection = jcBankdb.collection('jcbankCollection')
+
+        let people = []
+
+        const cursor = jcbankCollection.find({})
+        for await(const person of cursor){
+            people.push(person)
+        }
+
+        return people;
+    }catch(err){
+        console.log(err.message);
+    }finally{
+        await client.close();
+    }
+    
+}

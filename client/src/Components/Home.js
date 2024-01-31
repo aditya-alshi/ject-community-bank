@@ -1,26 +1,36 @@
-import { 
-    Link,
-    Outlet 
-} from "react-router-dom"
+import React from "react";
 
 export default function Home(){
-    return(
-        <div className="home--wrapper">
-            <header className="home--header">
-                <h1>Ject Communit Bank</h1>
-                <Link className="home--header--buttons" id="Link--wrapper--signupButton" to={'signup'}>
-                    <button id="signup--button" >Sign Up</button>
-                </Link>
-                <button className="home--header--buttons" id="login--button">Login</button>
-            </header>
-            <div className="home--main">
-                <Outlet />
+
+
+    const [people, setPeople] = React.useState([])
+
+    React.useEffect(()=>{
+        async function fetchData(){
+            try{
+                const response = await fetch('https://jectcommunitybank.onrender.com/allpeople')
+                const data = await response.json();
+                setPeople(data);
+            }catch(err){
+                console.log(err.message);
+            }
+        }
+        fetchData();
+    },[])
+
+    const renderPeople = people.map(person => <div
+        key={person._id}
+        className="person--card">
+            <div className="person--image"></div>
+            <div className="person--name">
+                {person.firstName} {person.lastName}
             </div>
-            <footer className="home--footer">
-                <i className="facebook--link">facebook</i>
-                {"|"}
-                <i className="twitter--link"> twitter</i>
-            </footer>
+    </div>)
+   
+
+    return(
+        <div className="home--main--wrapper">
+            {renderPeople}
         </div>
     )
 }

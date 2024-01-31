@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
 import ErrorPage from './Components/ErrorPage';
-import Home from './Components/Home';
+import Welcome from './Components/Welcome';
 import Form from './Components/Form';
 import Intro from './Components/Intro';
+import Login from './Components/Login';
+import Home from './Components/Home'
 
 import {
   createBrowserRouter,
@@ -14,7 +16,7 @@ import {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <Welcome />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Form />
+      },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/home',
+        element: <Home />
       }
     ]
   },

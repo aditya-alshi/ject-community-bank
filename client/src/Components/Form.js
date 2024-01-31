@@ -1,7 +1,12 @@
 import React from 'react';
+import { 
+    Link,
+    useNavigate
+} from "react-router-dom";
 
 export default function Form(){
-
+    const navigate = useNavigate();
+    
     const [formData, setFormData] = React.useState({
         firstName : "",
         lastName: "",
@@ -14,6 +19,7 @@ export default function Form(){
         event.preventDefault();
 
         const uri = 'https://jectcommunitybank.onrender.com/submit'
+        // const uri = 'http://localhost:8000/submit'
 
         fetch(uri, {
             method: 'POST',
@@ -23,7 +29,10 @@ export default function Form(){
             body: JSON.stringify(formData)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            navigate('/login');
+        })
         .catch(err=>{
             console.log("Error: ", err);
         })
@@ -86,9 +95,8 @@ export default function Form(){
             onChange={handleChange}
         />
         <button
-             type="submit" 
-             
-             className='form--elements submit--button'
+            type="submit" 
+            className='form--elements submit--button'
         >Register</button>
       </form>
     );

@@ -1,8 +1,7 @@
 :root{
-  --backgorund: black;
-  --red: #ee4037;
-  --purple: #262161;
-  --yellow: #fbaf41;
+  --darkgrey : #68655e;
+  --faintpurple: #f0e7f4;
+  
 }
 
 body{
@@ -49,15 +48,15 @@ body{
 }
 
 
-/* Home */
+/* welcome */
 
-.home--wrapper{
+.welcome--wrapper{
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.home--header{
+.welcome--header{
   padding: 0 20px;
   margin-bottom: 5px;
   display: flex;
@@ -66,31 +65,31 @@ body{
   box-shadow: -5px 0px  15px rgba(0, 0, 0, 0.2);
 }
 
-.home--header--buttons{
-  padding: 5px;
-  border-radius: 5px;
-}
-#Link--wrapper--signupButton{
-  margin-left: auto;
-  margin-right: 5px;
+.welcome--header--buttons{ 
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  margin: 6px;
 }
 
-#signup--button{
+
+#signup--button, #login--button{
   padding: 5px;
   border-radius: 5px;
+  margin-right: 3px;
 }
 
-.home--main{
+.welcome--main{
   /* border: 1px solid black; */
   text-align: center;
-  width: 60%;
+  width: fit-content;
   margin: auto;
 }
 
-.home--wrapper .home--footer{
+.welcome--wrapper .welcome--footer{
   /* border: 2px solid darkgreen; */
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   bottom: 2px;
   margin-bottom: 5px;
@@ -98,6 +97,43 @@ body{
   box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.home--footer i{
+.welcome--footer i{
   cursor: pointer;
+}
+/* -------------------------------------------------------------------- */
+
+/* Intro */
+
+.intro--main{
+  width: 80%;
+  margin: auto;
+}
+
+/* ------------------------------------------------------------------------------ */
+
+/* Home */
+
+.home--main--wrapper{
+  max-width: fit-content;
+  margin: auto;
+}
+
+.person--card{
+  display: flex;
+  /* flex-direction: column; */
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.2), 2px 2px 3px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+}
+
+.person--image{
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--darkgrey);
+}
+
+.person--name{
+  margin-left: 6px;
 }
