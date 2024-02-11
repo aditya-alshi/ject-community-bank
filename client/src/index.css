@@ -1,13 +1,242 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+:root{
+    --dark--green: #025928;
+    --light--green: #3c8c30;
+    --orange: #d96704;
+    --light--gray: #818385;
+    --dark--gray: #303030;
+    --element--shadow: 0 0.1rem 0.1rem var(--dark--gray);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+/* ----------------------------------------------------------- */
+
+/* Header */
+
+.welcome--header{
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.1rem 0.3rem var(--dark--gray);
+}
+
+.welcome--header .welcome--header--main--heading{
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: var(--orange);
+    text-decoration: none;
+}
+
+    /* ----------------------------------------- */
+    /* options--dropdown */
+
+    .welcome--header .options--dropdown{
+        font-size: 1.8rem;
+        margin-left: auto;
+        margin-right: 3rem;
+        display: none;
+    }
+
+
+    /* ----------------------------------------- */
+    /* Login section */
+
+    .login--button{
+        position: absolute;
+        top: 1.5%;right:1.2%;
+        font-size: 1.3rem;
+        font-weight: bold;
+        padding: 0.8rem;
+        border: 0.1rem solid var(--dark--gray);
+        border-radius: 0.5rem;
+        margin-right: 1.6rem;
+        cursor: pointer;
+    }
+    
+    .login--button:hover, #login--submit:hover{
+        background-color: var(--orange);
+        color: white;
+    }
+
+    .login--form{
+        background-color: white;
+        font-size: 1.3rem;
+        text-align: center;
+        padding: 1rem;
+        position: absolute;
+        top:10%; right:-110%;
+        box-shadow: 0.1rem 0.1rem 0.5rem var(--dark--gray);
+        transition: 1s linear;
+    }
+
+    .login--form .login--register--option{
+        color: var(--orange);
+    }
+
+    .login--form .login--register--option:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    .login--form.slid--in{
+        right: 2rem;
+        transition: 0.2s linear;
+    }
+
+    .login--form .login--form--elements{
+        display: block;
+        width: 100%;
+        margin-top: 0.6rem;
+        padding: 0.5rem;
+    }
+
+    .login--form #dont-have-an-accout{
+        padding: 0;
+    }
+
+    .login--form #login--register--button{
+        margin-top: 0;
+        padding: 0;
+    }
+
+/* ----------------------------------------------------------------------------------- */
+/* Intro */
+
+.intro--wrapper{
+    text-align: center;
+    max-width: 80%;
+    margin: 10% auto;
+    font-size: 1.6rem;
+}
+
+.intro--wrapper .register--link{
+    color: var(--orange);
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.intro--wrapper .register--link:hover{
+    text-decoration: underline;
+}
+/* ----------------------------------------------------------------- */
+
+
+
+/* Register */
+
+
+.register--wrapper{
+    text-align: center;
+    height: 100vh;
+}
+
+.register--form{
+    margin: 12% auto;
+    width: 22rem;
+    background-color: white;
+    box-shadow: 0.2rem 0.2rem 0.5rem var(--dark--gray);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.register--form .register--heading{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--orange);
+}
+
+ .register--form--elements{
+    display: inline-block;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    
+}
+
+.register--form .register--form--submit--button:hover{
+    background-color: var(--orange);
+    color: white;
+}
+/* ----------------------------------------------------------------------------------- */
+
+
+
+/* Home */
+
+
+.home--wrapper{
+    margin:auto;
+    padding: 0.6rem;
+    width: 80%;
+    min-width: 10rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(auto, 30rem));
+    gap: 1rem;
+    justify-content: center;
+}
+
+    /* the person block */
+.home--wrapper .people--items{
+    margin: 1rem ;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border: 0.1rem solid var(--dark--gray);
+    border-radius: 0.5rem;
+}
+
+    /* display picture of the person */
+.home--wrapper .people--items .their--display--picture{
+    text-align: center;
+    width: 90%;height: 15rem;
+    display: block;
+    margin: 0.5rem auto;
+}
+
+.home--wrapper .people--items .person--detail{
+    font-size: 1.4rem;
+}
+.home--wrapper .people--items .persons-rating{
+    margin-top: 0.4rem;
+}
+
+.home--wrapper .people--items .persons-rating .rating--stars{
+    font-size: 1.6rem;
+    margin-right: 0.1rem;
+}
+/* --------------------------------------------------------------- */
+
+
+/* All Media Queries */
+@media (max-width:720px){
+
+    html{
+        font-size: 55%;
+    }
+
+    .welcome--header{
+        padding: 1.7rem;
+        box-shadow: 0 0.2rem 0.2rem var(--dark--gray);
+    }
+
+    .welcome--header .options--dropdown{
+        display: inline-block;
+    }
+    .welcome--header .options--dropdown:hover{
+        color: var(--orange);
+    }
+
+    .login--form{
+        top: 6%;
+    }
 }
