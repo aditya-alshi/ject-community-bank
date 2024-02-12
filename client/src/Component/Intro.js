@@ -6,9 +6,9 @@ import Login from './Login';
 
 export default function Intro(){
     const loginClick = () => {
-        const theLoginForm = document.querySelector(".login--form");
-        theLoginForm.classList.toggle("slid--in");
-      };
+    const theLoginForm = document.querySelector(".login--form");
+    theLoginForm.classList.toggle("slid--in");
+  };
     return(
         <div className="intro--wrapper">
             <Login loginClick={()=>loginClick()}/>

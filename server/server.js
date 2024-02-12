@@ -1,11 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const getAllPeople = require('./database').getAllPeople;
+const bodyparser = require('body-parser');
+const database = require('./database');
+
+// All methods in the database.js
+const getAllPeople = database.getAllPeople;
+const validateLogin = database.validateLogin;
 
 const app = express();
 
 app.use(cors());
+app.use(bodyparser.json());
 
 app.get('/allpeople', (req,res)=>{
     try{
@@ -14,6 +20,18 @@ app.get('/allpeople', (req,res)=>{
     }catch(err){
         console.log(err);
     }
+});
+
+app.post('/validlogin', async (req, res)=>{
+    try{
+        const query = req.body;
+        const result = await validateLogin(query);
+        console.log(result);
+        res.json(result);
+    }catch(err){
+        res.json(err);
+    }
+
 })
 
 app.use(express.static(path.join('public')));

@@ -24,13 +24,19 @@ module.exports.getAllPeople = async ()=>{
     }
 }
 
-module.exports.findOnePerson = async ()=>{
+module.exports.validateLogin = async (query)=>{
     try{
         await client.connect();
-
         const jcBankdb = await client.db('jcBankdb');
         const jcbankCollection = await jcBankdb.collection('jcbankCollection');
-        
+        const person = await jcbankCollection.findOne({email : query.email});
+        if(!person){
+            return {message: "Not Found", email: false};
+        }else if(person.password !== query.password){
+            return {message : "Found", email : true, password : false};
+        }else{
+            return {message: "Found", email: true, password: true};
+        }
     }catch(err){
         console.log(err.message);
     }finally{

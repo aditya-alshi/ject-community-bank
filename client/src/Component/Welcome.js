@@ -1,5 +1,4 @@
 import { Outlet, Link } from "react-router-dom";
-import Login from "./Login";
 
 import { FaBars } from "react-icons/fa6";
 

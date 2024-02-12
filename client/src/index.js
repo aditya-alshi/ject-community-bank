@@ -9,6 +9,7 @@ import Intro from './Component/Intro';
 import Register from './Component/Register';
 import Home from './Component/Home';
 import { loader as homeLoader } from './Component/Home'; //loader function
+import { action as loginAction} from './Component/Login';  
 
 const router = createBrowserRouter([
     {
@@ -17,11 +18,12 @@ const router = createBrowserRouter([
         children:[
             {
                 index:true,
-                element: <Intro />
+                element: <Intro />,
+                action: loginAction,
             },
             {
                 path: '/register',
-                element: <Register />
+                element: <Register />,
             },
             {
                 path:'/home',
