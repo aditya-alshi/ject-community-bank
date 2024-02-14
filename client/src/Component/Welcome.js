@@ -1,9 +1,8 @@
 import { Outlet, Link } from "react-router-dom";
-
-import { FaBars } from "react-icons/fa6";
+import { FaBars} from "react-icons/fa6";
+ 
 
 export default function Welcome() {
-  
   return (
     <div className="welcome--main--wrapper">
       <header className="welcome--header">

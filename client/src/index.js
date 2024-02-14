@@ -6,7 +6,7 @@ import './index.css';
 // importing Components
 import Welcome from './Component/Welcome';
 import Intro from './Component/Intro';
-import Register from './Component/Register';
+import Register, {action as registerAction} from './Component/Register';
 import Home from './Component/Home';
 import { loader as homeLoader } from './Component/Home'; //loader function
 import { action as loginAction} from './Component/Login';  
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register />,
+                action: registerAction
             },
             {
                 path:'/home',
