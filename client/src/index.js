@@ -1,47 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css'
-import ErrorPage from './Components/ErrorPage';
-import Welcome from './Components/Welcome';
-import Form from './Components/Form';
-import Intro from './Components/Intro';
-import Login from './Components/Login';
-import Home from './Components/Home'
+import {RouterProvider, createBrowserRouter} from 'react-router-dom';
+import './index.css';
 
-import {
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom';
+// importing Components
+import Welcome from './Component/Welcome';
+import Intro from './Component/Intro';
+import Register, {action as registerAction} from './Component/Register';
+import Home from './Component/Home';
+import { loader as homeLoader } from './Component/Home'; //loader function
+import { action as loginAction} from './Component/Login';
+import Login from './Component/Login';  
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Welcome />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <Intro />
-      },
-      {
-        path: '/signup',
-        element: <Form />
-      },
-      {
-        path: '/login',
-        element: <Login />
-      },
-      {
-        path: '/home',
-        element: <Home />
-      }
-    ]
-  },
+    {
+        path : '/',
+        element : <Welcome />,
+        children:[
+            {
+                index:true,
+                element: <Intro />,
+                action: loginAction,
+            },
+            {
+                path: '/register',
+                element: <Register />,
+                action: registerAction,
+                children:[
+                    {
+                        path: 'login',
+                        element: <Login />,
+                        action:loginAction
+                    },
+                ]
+            },
+            {
+                path:'/home',
+                element: <Home />,
+                loader: homeLoader
+            }
+        ]
+    }
 ])
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>  
 )

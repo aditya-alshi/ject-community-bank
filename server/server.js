@@ -1,26 +1,55 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const ject = require('./ject-database');
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const bodyparser = require("body-parser");
+const database = require("./database");
+
+// All methods in the database.js
+const getAllPeople = database.getAllPeople;
+const validateLogin = database.validateLogin;
+const registerPerson = database.registerPerson;
 
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyparser.json());
+app.use(express.json())
 
-app.post('/submit', (req, res)=>{
-    const formData = req.body;
-    ject.addDocument(formData);
-    res.json({ message: 'Data received successfully!' });
-} );
-
-app.get('/allpeople', (req, res)=>{
-    ject.getAllPeople().then(allPeople => res.json(allPeople));
+app.post('/registerPerson', async (req, res)=>{
+  try{
+    const registerFormData = req.body;
+    console.log(registerFormData);
+    // res.json({message: 'Recieved'});
+    const registerPersonResult = await registerPerson(registerFormData);
+    console.log(registerPersonResult)
+    res.json({message:"Succesfully Registered"});
+  }catch(err){
+    res.json({message: 'Error occur while adding details.\nTry again'})
+  }
 })
 
-
-app.use(express.static(path.join('public')));
-app.use((req,res) => {
-   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+app.get("/allpeople", (req, res) => {
+  try {
+    getAllPeople().then((people) => res.json(people));
+  } catch (err) {
+    console.log(err);
+  }
 });
+
+app.post("/validlogin", async (req, res) => {
+  try {
+    const query = req.body;
+    const result = await validateLogin(query);
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+app.use(express.static(path.join("public")));
+app.use((req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
+
 app.listen(8000);
