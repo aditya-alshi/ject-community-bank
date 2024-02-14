@@ -1,5 +1,4 @@
 export const setCookie = (email)=>{
-    
     document.cookie = 'email=' + email
 }
 

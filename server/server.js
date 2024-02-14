@@ -13,6 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyparser.json());
+app.use(express.json())
 
 app.post('/registerPerson', async (req, res)=>{
   try{
@@ -21,7 +22,7 @@ app.post('/registerPerson', async (req, res)=>{
     // res.json({message: 'Recieved'});
     const registerPersonResult = await registerPerson(registerFormData);
     console.log(registerPersonResult)
-    res.json({message:"added"});
+    res.json({message:"Succesfully Registered"});
   }catch(err){
     res.json({message: 'Error occur while adding details.\nTry again'})
   }
@@ -48,7 +49,7 @@ app.post("/validlogin", async (req, res) => {
 
 app.use(express.static(path.join("public")));
 app.use((req, res) => {
-  res.sendFile(path.resolve("public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
 
-app.listen(9000);
+app.listen(8000);

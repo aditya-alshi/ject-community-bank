@@ -1,20 +1,30 @@
-import { Form, redirect, useActionData } from 'react-router-dom';
+import { 
+    Link,
+    Outlet,
+    Form,  
+    useActionData, 
+} from 'react-router-dom';
+// import Login from './Login';
+
 
 export const action = async ({ request })=>{
     try{
-
+        
         const formData = await request.formData();
         const body = Object.fromEntries(formData)
         // console.log(body)
-        await fetch('http://localhost:9000/registerPerson', {
+          const url = 'https://jectcommunitybank.onrender.com/registerPerson'
+            // const uri = 'http://localhost:8000/registerPerson'
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
         })
-        
-        return redirect('/home');
+
+        const serverMessage = await response.json();
+        return serverMessage;
     }catch(err){
         return err.message;
     }
@@ -22,8 +32,6 @@ export const action = async ({ request })=>{
 
 export default function Register(){
 
-    // const uri = 'https://jectcommunitybank.onrender.com/submit'
-        // const uri = 'http://localhost:9000/registerPerson'
 
         const actionData = useActionData();
 
@@ -31,8 +39,10 @@ export default function Register(){
             console.log(actionData.message)
         }
 
+
     return(
         <div className="register--wrapper">
+            <Outlet />
             <Form method='post' className='register--form' replace>
                 <p className="register--heading">Register</p>
                 <input name='firstName' className='register--form--elements' type="text" placeholder='First Name' />
@@ -41,6 +51,9 @@ export default function Register(){
                 <input type="tel" name="phoneNumber" className='register--form--elements' placeholder='Phone Number' />
                 <input name='password' className='register--form--elements' type="password" placeholder='password' />
                 <button className='register--form--elements register--form--submit--button'type='submit'>Register</button>
+                {actionData && <p className="register--form--elements">
+                    {actionData.message} <Link to={'login'} >Login Now</Link>
+                </p> }
             </Form>
         </div>
     )

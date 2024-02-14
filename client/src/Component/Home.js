@@ -6,9 +6,10 @@ import { FaRegStar } from "react-icons/fa";
 
 export const loader = async () => {
   try {
-    const url = "http://localhost:9000/allpeople";
-    const res9000 = await fetch(url);
-    const people = await res9000.json();
+    const url = 'https://jectcommunitybank.onrender.com/allpeople'
+    // const url = "http://localhost:8000/allpeople";
+    const res8000 = await fetch(url);
+    const people = await res8000.json();
     return people;
   } catch (err) {
     console.log(err);

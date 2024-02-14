@@ -11,7 +11,8 @@ export const action = async ({ request }) => {
     password,
   };
 
-  const url = "http://localhost:9000/validlogin";
+  const url = 'https://jectcommunitybank.onrender.com/validlogin'
+  // const url = "http://localhost:8000/validlogin";
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -28,14 +29,18 @@ export const action = async ({ request }) => {
   return message;
 };
 
-export default function Login({ loginClick }) {
+export default function Login() {
+  const loginClick = () => {
+    const theLoginForm = document.querySelector(".login--form");
+    theLoginForm.classList.toggle("slid--in");
+  };
   const actionResult = useActionData();
   return (
     <>
-      <p className="login--button" onClick={loginClick}>
-        Login
-      </p>
-      <Form method="post" className="login--form">
+        <p className="login--button" onClick={loginClick}>
+          Login
+        </p>
+      <Form method="post" className="login--form" replace>
         <input
           type="email"
           name="email"
