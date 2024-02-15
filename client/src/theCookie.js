@@ -1,5 +1,6 @@
-export const setCookie = (email)=>{
+export const setCookie = ({email=false,login=true})=>{
     document.cookie = 'email=' + email
+    document.cookie = 'login=' + login
 }
 
 export const getCookie = ()=>{
@@ -7,6 +8,13 @@ export const getCookie = ()=>{
     const cookArr = thereturnCook.split('; ')
     const modifiedCook = cookArr.map(item =>item.split('='));
     // console.log(modifiedCook);
-    const finalCookieData = Object.fromEntries(modifiedCook);
+    const CookieData = Object.fromEntries(modifiedCook)
+    const CookieDataStringyfied = JSON.stringify(CookieData);
+    const finalCookieData = JSON.parse(CookieDataStringyfied,(key, value)=>{
+        if(value === "true") return true
+        else if(value === "false") return false;
+        return value
+    })
+    // 
     return finalCookieData;
 }

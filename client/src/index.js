@@ -4,11 +4,13 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import './index.css';
 
 // importing Components
-import Welcome from './Component/Welcome';
+import Welcome, { loader as welcomeLoader } from './Component/Welcome';
 import Intro from './Component/Intro';
 import Register, {action as registerAction} from './Component/Register';
-import Home from './Component/Home';
-import { loader as homeLoader } from './Component/Home'; //loader function
+import Home, { 
+    action as homeAction,
+    loader as homeLoader 
+} from './Component/Home';
 import { action as loginAction} from './Component/Login';
 import Login from './Component/Login';  
 
@@ -16,6 +18,7 @@ const router = createBrowserRouter([
     {
         path : '/',
         element : <Welcome />,
+        loader: welcomeLoader,
         children:[
             {
                 index:true,
@@ -37,7 +40,8 @@ const router = createBrowserRouter([
             {
                 path:'/home',
                 element: <Home />,
-                loader: homeLoader
+                loader: homeLoader,
+                action: homeAction
             }
         ]
     }

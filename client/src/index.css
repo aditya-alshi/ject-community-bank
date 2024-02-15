@@ -36,6 +36,7 @@ html{
     font-size: 2rem;
     color: var(--orange);
     text-decoration: none;
+    cursor: pointer;
 }
 
     /* ----------------------------------------- */
@@ -184,6 +185,30 @@ html{
     grid-template-columns: repeat(auto-fill, minmax(auto, 30rem));
     gap: 1rem;
     justify-content: center;
+}
+
+.home--logout--button{
+    position: absolute;
+    top: 1.5%;right:1.2%;
+    text-align: center;
+    
+}
+
+.home--logout--button button{
+    background-color: white;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0.8rem;
+    border: 0.1rem solid var(--dark--gray);
+    border-radius: 0.5rem;
+    margin-right: 1.6rem;
+    cursor: pointer;
+}
+
+.home--logout--button button:hover{
+    background-color: var(--orange);
+        color: white;
 }
 
     /* the person block */

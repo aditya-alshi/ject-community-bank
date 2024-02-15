@@ -1,3 +1,4 @@
+import React from 'react';
 import { 
     Link,
     Outlet,
@@ -6,15 +7,13 @@ import {
 } from 'react-router-dom';
 // import Login from './Login';
 
-
 export const action = async ({ request })=>{
     try{
-        
         const formData = await request.formData();
         const body = Object.fromEntries(formData)
         // console.log(body)
-          const url = 'https://jectcommunitybank.onrender.com/registerPerson'
-            // const uri = 'http://localhost:8000/registerPerson'
+        //   const url = 'https://jectcommunitybank.onrender.com/registerPerson'
+            const url = 'http://localhost:8000/registerPerson'
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -31,15 +30,12 @@ export const action = async ({ request })=>{
 }
 
 export default function Register(){
+    const actionData = useActionData();
 
-
-        const actionData = useActionData();
-
-        if(actionData){
-            console.log(actionData.message)
-        }
-
-
+    if(actionData){
+        console.log(actionData.message)
+    }
+    
     return(
         <div className="register--wrapper">
             <Outlet />

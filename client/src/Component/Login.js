@@ -5,14 +5,14 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
-  setCookie(email)
+
   const query = {
     email,
     password,
   };
 
-  const url = 'https://jectcommunitybank.onrender.com/validlogin'
-  // const url = "http://localhost:8000/validlogin";
+  // const url = 'https://jectcommunitybank.onrender.com/validlogin'
+  const url = "http://localhost:8000/validlogin";
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -23,6 +23,7 @@ export const action = async ({ request }) => {
 
   const message = await response.json();
   if (message.email & message.password) {
+    setCookie({ email: true, login: true });
     return redirect("/home");
   }
 
@@ -37,9 +38,9 @@ export default function Login() {
   const actionResult = useActionData();
   return (
     <>
-        <p className="login--button" onClick={loginClick}>
-          Login
-        </p>
+      <p className="login--button" onClick={loginClick}>
+        Login
+      </p>
       <Form method="post" className="login--form" replace>
         <input
           type="email"
