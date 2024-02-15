@@ -13,20 +13,20 @@ const app = express();
 
 app.use(cors());
 app.use(bodyparser.json());
-app.use(express.json())
+app.use(express.json());
 
-app.post('/registerPerson', async (req, res)=>{
-  try{
+app.post("/registerPerson", async (req, res) => {
+  try {
     const registerFormData = req.body;
     console.log(registerFormData);
     // res.json({message: 'Recieved'});
     const registerPersonResult = await registerPerson(registerFormData);
-    console.log(registerPersonResult)
-    res.json({message:"Succesfully Registered"});
-  }catch(err){
-    res.json({message: 'Error occur while adding details.\nTry again'})
+    console.log(registerPersonResult);
+    res.json({ message: "Succesfully Registered" });
+  } catch (err) {
+    res.json({ message: "Error occur while adding details.\nTry again" });
   }
-})
+});
 
 app.get("/allpeople", (req, res) => {
   try {

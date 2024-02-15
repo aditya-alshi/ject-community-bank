@@ -1,44 +1,41 @@
-import { useLoaderData } from "react-router-dom";
-import { getCookie} from "../theCookie";
-import { FaRegStar } from "react-icons/fa";
+import React from "react";
+import { Form, Outlet, redirect, Link } from "react-router-dom";
+import { setCookie } from "../theCookie";
+import { LiaUserFriendsSolid } from "react-icons/lia";
+import { CgProfile } from "react-icons/cg";
 
-
-
-export const loader = async () => {
+export const action = async () => {
   try {
-    const url = 'https://jectcommunitybank.onrender.com/allpeople'
-    // const url = "http://localhost:8000/allpeople";
-    const res8000 = await fetch(url);
-    const people = await res8000.json();
-    return people;
+    setCookie({ login: false });
+    return redirect("/");
   } catch (err) {
     console.log(err);
+    return "";
   }
 };
 
 export default function Home() {
-  const theCookieEmail = getCookie().email;
-  let people = useLoaderData();
-  people = people.filter(item => item.email !== theCookieEmail );
-
-  const renderPeople = people.map((person) => {
-    return (
-      
-      <div key={person._id} className="people--items">
-        <img className="their--display--picture" src="" alt="" />
-        <p className="persons--name person--detail">
-          {person.firstName} {person.lastName}
-        </p>
-        <p className="person--detail persons-rating">
-          <FaRegStar className="rating--stars" />
-          <FaRegStar className="rating--stars" />
-          <FaRegStar className="rating--stars" />
-          <FaRegStar className="rating--stars" />
-          <FaRegStar className="rating--stars" />
-          </p>
+  return (
+    <>
+      <Form method="post" className="home--logout--button" replace>
+        <button type="submit">Logout</button>
+      </Form>
+      <div className="home--section">
+        <aside className="home--sidebar">
+          <Link className="home--sidebar--links home--profile--link" to={"userProfile"}>
+            <CgProfile className="home--sidebar--icon home--profile--icon" />
+            <span className="home--sidebar--Text">Profile</span>
+          </Link>
+          <Link
+            className="home--sidebar--links home--renderPeople--link"
+            to={""}
+          >
+            <LiaUserFriendsSolid className="home--sidebar--icon render--people--icon" />
+            <span className="home--sidebar--Text">People</span>
+          </Link>
+        </aside>
+        <Outlet className="home--outlet" />
       </div>
-    );
-  });
-
-  return <div className="home--wrapper">{renderPeople}</div>;
+    </>
+  );
 }
