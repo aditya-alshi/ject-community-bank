@@ -10,7 +10,7 @@ export const loader = async () => {
     const people = await res8000.json();
     return people;
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };
 
