@@ -7,7 +7,7 @@ import { getCookie } from "../theCookie";
 export const loader = async() => {
   try{
     const payl = await getCookie() 
-    return payl.login;
+    return payl;
   }catch(err){
     console.log(err);
     return null
@@ -23,7 +23,7 @@ export default function Welcome() {
         <Link
           replace
           className="welcome--header--main--heading"
-          to={`${loggedIn ? "/home" : ""}`}
+          to={`${loggedIn.login ? "/home" : ""}`}
         >
           Ject Community Bank
         </Link>
