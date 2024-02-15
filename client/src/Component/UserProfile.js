@@ -1,5 +1,5 @@
 export default function UserProfile(){
     return(
-        <h1>User Profile</h1>
+        <div className="personal--profile"><h1>Profile</h1></div>
     )
 }

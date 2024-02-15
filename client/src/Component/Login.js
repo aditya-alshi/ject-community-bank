@@ -11,8 +11,8 @@ export const action = async ({ request }) => {
     password,
   };
 
-  // const url = 'https://jectcommunitybank.onrender.com/validlogin'
-  const url = "http://localhost:8000/validlogin";
+  const url = "https://jectcommunitybank.onrender.com/validlogin";
+  // const url = "http://localhost:8000/validlogin";
   const response = await fetch(url, {
     method: "POST",
     headers: {

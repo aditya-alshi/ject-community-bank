@@ -8,11 +8,14 @@
     --dark--gray: #303030;
     --element--shadow: 0 0.1rem 0.1rem var(--dark--gray);
 }
-
 html{
     font-size: 62.5%;
+}
+
+html, body{
     overflow-x: hidden;
 }
+
 
 *{
     box-sizing: border-box;
@@ -24,6 +27,10 @@ html{
 /* Header */
 
 .welcome--header{
+    position: fixed;
+    left: 0; right: 0; top: 0;
+    background-color: white;
+    z-index: 100;
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -54,6 +61,7 @@ html{
     /* Login section */
 
     .login--button{
+        z-index: 110;
         position: absolute;
         top: 1.5%;right:1.2%;
         font-size: 1.3rem;
@@ -110,6 +118,7 @@ html{
         margin-top: 0;
         padding: 0;
     }
+
 
 /* ----------------------------------------------------------------------------------- */
 /* Intro */
@@ -179,15 +188,17 @@ html{
 .home--wrapper{
     margin:auto;
     padding: 0.6rem;
-    width: 80%;
+    width: 80%; height: 100%;
     min-width: 10rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(auto, 30rem));
     gap: 1rem;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .home--logout--button{
+    z-index: 110;
     position: absolute;
     top: 1.5%;right:1.2%;
     text-align: center;
@@ -239,6 +250,44 @@ html{
     font-size: 1.6rem;
     margin-right: 0.1rem;
 }
+
+.home--section{
+    height: 100vh;
+    /* overflow-y: auto; */
+    display: flex;
+    padding-top: 6rem;
+
+}
+
+.home--sidebar{
+    background-color: var(--light--gray);
+    font-size: 1.8rem;
+    border: 0.1rem solid black;
+    flex: 1 0 auto;
+}
+
+.home--sidebar--links{
+    text-decoration: none;
+    color: var(--dark--gray);
+    font-weight: bold;
+}
+
+.home--sidebar--Text{
+    background-color: white;
+    padding: 2rem;
+    display: block;
+    text-align: center;
+    border-bottom: .1rem solid black ;
+}
+
+.home--sidebar--Text:hover{
+    background-color: var(--orange);
+    color: white;
+}
+
+.home--sidebar--icon{
+    display: none;
+}
 /* --------------------------------------------------------------- */
 
 
@@ -264,4 +313,31 @@ html{
     .login--form{
         top: 6%;
     }
+
+    .home--section{
+        flex-direction: column-reverse;
+    }
+
+    .home--sidebar{
+        flex: 0 0 10rem;
+        display: flex;
+        padding: 2rem;
+        justify-content: space-around;
+    }
+
+    .home--sidebar--icon{
+        color: white;
+        display: inline-block;
+    }
+
+    .home--sidebar--icon:active{
+        font-size: 2.5rem;
+    }
+
+    .home--sidebar--Text{
+        display: none;
+        transition: .2s linear;
+    }
+
+    
 }
