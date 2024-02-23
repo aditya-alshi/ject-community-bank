@@ -16,7 +16,7 @@ export const loader = async() => {
 
 export default function Welcome() {
   const loggedIn = useLoaderData();
-  console.log(loggedIn);
+  // console.log(loggedIn);
   return (
     <div className="welcome--main--wrapper">
       <header className="welcome--header">
@@ -32,7 +32,7 @@ export default function Welcome() {
       <main className="welcome--main">
         <Outlet />
       </main>
-      <footer className="welcome--footer"></footer>
+      <footer className="welcome--footer">Facebook Twitter</footer>
     </div>
   );
 }

@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
 
 :root{
     --dark--green: #025928;
@@ -10,27 +15,37 @@
 }
 html{
     font-size: 62.5%;
-}
-
-html, body{
+    position: fixed;
+    left: 0;right: 0;
+    top: 0;
     overflow-x: hidden;
 }
 
-
-*{
-    box-sizing: border-box;
-    margin: 0; padding: 0;
-    font-family: 'Poppins', sans-serif;
+body{
 }
+
+
 /* ----------------------------------------------------------- */
+.welcome--main--wrapper{
+    height: 100vh;
+    overflow-y: auto;
+}
+.welcome--main{
+    margin-top: 6.4rem;
+}
+
+.welcome--footer{
+    background-color: lightblue;
+    text-align: center;
+}
 
 /* Header */
 
 .welcome--header{
     position: fixed;
-    left: 0; right: 0; top: 0;
+    top: 0; left: 0;right: 0;
+    z-index: 1000;
     background-color: white;
-    z-index: 100;
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -46,24 +61,27 @@ html, body{
     cursor: pointer;
 }
 
-    /* ----------------------------------------- */
-    /* options--dropdown */
+/* ----------------------------------------- */
+/* options--dropdown */
 
-    .welcome--header .options--dropdown{
-        font-size: 1.8rem;
-        margin-left: auto;
-        margin-right: 3rem;
-        display: none;
-    }
+.welcome--header .options--dropdown{
+    font-size: 1.8rem;
+    margin-left: auto;
+    margin-right: 3rem;
+    display: none;
+}
+
+
+
 
 
     /* ----------------------------------------- */
     /* Login section */
-
+    
     .login--button{
-        z-index: 110;
+        z-index: 1001;
         position: absolute;
-        top: 1.5%;right:1.2%;
+        top: 1%;right:1.2%;
         font-size: 1.3rem;
         font-weight: bold;
         padding: 0.8rem;
@@ -77,22 +95,22 @@ html, body{
         background-color: var(--orange);
         color: white;
     }
-
+    
     .login--form{
         background-color: white;
         font-size: 1.3rem;
         text-align: center;
         padding: 1rem;
         position: absolute;
-        top:10%; right:-110%;
+        top:6.8rem; right:-110%;
         box-shadow: 0.1rem 0.1rem 0.5rem var(--dark--gray);
         transition: 1s linear;
     }
-
+    
     .login--form .login--register--option{
         color: var(--orange);
     }
-
+    
     .login--form .login--register--option:hover{
         text-decoration: underline;
         cursor: pointer;
@@ -102,32 +120,37 @@ html, body{
         right: 2rem;
         transition: 0.2s linear;
     }
-
+    
     .login--form .login--form--elements{
         display: block;
         width: 100%;
         margin-top: 0.6rem;
         padding: 0.5rem;
     }
-
+    
     .login--form #dont-have-an-accout{
         padding: 0;
     }
-
+    
     .login--form #login--register--button{
         margin-top: 0;
         padding: 0;
     }
-
-
-/* ----------------------------------------------------------------------------------- */
-/* Intro */
-
-.intro--wrapper{
-    text-align: center;
-    max-width: 80%;
-    margin: 10% auto;
+    
+    
+    /* ----------------------------------------------------------------------------------- */
+    /* Intro */
+    
+    .intro--wrapper{
+        text-align: center;
+        max-width: 80%;
+        margin: 14rem auto;
     font-size: 1.6rem;
+}
+
+.intro--message{
+    height: min-content;
+    margin: auto auto;
 }
 
 .intro--wrapper .register--link{
@@ -148,7 +171,6 @@ html, body{
 
 .register--wrapper{
     text-align: center;
-    height: 100vh;
 }
 
 .register--form{
@@ -184,25 +206,49 @@ html, body{
 
 /* Home */
 
+.the-home-component-wrapper{
+}
 
-.home--wrapper{
-    margin:auto;
+.home--section{
+    display: flex;
+}
+
+.home--outlet{
+    width: 80%;
+    margin: auto;
+    
+    overflow-y: auto;
+}
+
+.home--sidebar{
+    min-width: 25rem;
+    background-color: var(--light--gray);
+    font-size: 1.8rem;
+    border: 1px solid var(--dark--gray);
+}
+
+.home--sidebar-content{
+    position:fixed;
+    top: 0;
+}
+
+.render--people--wrapper{
+    /* margin:auto; */
     padding: 0.6rem;
-    width: 80%; height: 100%;
+    width: 100%;
     min-width: 10rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(auto, 30rem));
     gap: 1rem;
     justify-content: center;
-    overflow-y: auto;
+    
 }
 
 .home--logout--button{
-    z-index: 110;
     position: absolute;
-    top: 1.5%;right:1.2%;
+    top: 1%;right:1.2%;
     text-align: center;
-    
+    z-index: 1001;
 }
 
 .home--logout--button button{
@@ -223,7 +269,7 @@ html, body{
 }
 
     /* the person block */
-.home--wrapper .people--items{
+.render--people--wrapper .people--items{
     margin: 1rem ;
     font-size: 1.2rem;
     padding: 1rem;
@@ -232,39 +278,26 @@ html, body{
 }
 
     /* display picture of the person */
-.home--wrapper .people--items .their--display--picture{
+.render--people--wrapper .people--items .their--display--picture{
     text-align: center;
     width: 90%;height: 15rem;
     display: block;
     margin: 0.5rem auto;
 }
 
-.home--wrapper .people--items .person--detail{
+.render--people--wrapper .people--items .person--detail{
     font-size: 1.4rem;
 }
-.home--wrapper .people--items .persons-rating{
+.render--people--wrapper .people--items .persons-rating{
     margin-top: 0.4rem;
 }
 
-.home--wrapper .people--items .persons-rating .rating--stars{
+.render--people--wrapper .people--items .persons-rating .rating--stars{
     font-size: 1.6rem;
     margin-right: 0.1rem;
 }
 
-.home--section{
-    height: 100vh;
-    /* overflow-y: auto; */
-    display: flex;
-    padding-top: 6rem;
 
-}
-
-.home--sidebar{
-    background-color: var(--light--gray);
-    font-size: 1.8rem;
-    border: 0.1rem solid black;
-    flex: 1 0 auto;
-}
 
 .home--sidebar--links{
     text-decoration: none;
@@ -288,9 +321,51 @@ html, body{
 .home--sidebar--icon{
     display: none;
 }
+
 /* --------------------------------------------------------------- */
 
+/* Profile */
 
+.personal--profile{
+    max-width: 50%;
+    margin-left: 7rem;
+}
+
+.personal--profile .edit--icon{
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.personal--profile .edit--icon:hover{
+    color: var(--orange);
+}
+
+.personal--profile .user--profile--edit{
+    
+}
+
+.personal--profile .user--profile--information{
+    padding: 1rem;
+}
+
+.personal--profile 
+.user--profile--information 
+.user-profile-elements{
+    font-size: 1.5rem;
+}
+
+.user--profile--image--wrapper{
+    display: inline-block;
+}
+.user--profile--image{
+    max-width: 12rem;
+    margin: 0.8rem auto;
+    border-radius: 100%;
+}
+
+.edit--profile--picture{
+    
+}
 /* All Media Queries */
 @media (max-width:720px){
 
@@ -311,7 +386,7 @@ html, body{
     }
 
     .login--form{
-        top: 6%;
+        top: 6.4rem;
     }
 
     .home--section{

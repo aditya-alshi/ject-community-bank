@@ -6,14 +6,26 @@ import "./index.css";
 // importing Components
 import Welcome, { loader as welcomeLoader } from "./Component/Welcome";
 import Intro from "./Component/Intro";
-import Register, { action as registerAction } from "./Component/Register";
-import Home, { action as homeAction } from "./Component/Home";
-import { action as loginAction } from "./Component/Login";
-import Login from "./Component/Login";
+import Register, {
+    action as registerAction 
+  } from "./Component/Register";
+import Login, {
+    action as loginAction 
+  } from "./Component/Login";
+import Home, {
+    action as homeAction 
+  } from "./Component/Home";
 import RenderPeople, {
-  loader as renderPeopleLoader,
-} from "./Component/RenderPeople";
-import UserProfile from "./Component/UserProfile";
+    loader as renderPeopleLoader,
+  } from "./Component/RenderPeople";
+import UserProfile, {
+    loader as userProfileLoader,
+    action as userEditaction,
+  } from "./Component/UserProfile";
+import UploadProfilePicture, {
+    loader as userProfilePictureLoader,
+    action as userProfilePictureAction,
+  } from "./Component/UploadProfilePicture";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +63,16 @@ const router = createBrowserRouter([
           {
             path: "userProfile",
             element: <UserProfile />,
+            loader: userProfileLoader,
+            action: userEditaction,
+            children: [
+              {
+                index: true,
+                element: <UploadProfilePicture />,
+                loader: userProfilePictureLoader,
+                action: userProfilePictureAction
+              },
+            ],
           },
         ],
       },

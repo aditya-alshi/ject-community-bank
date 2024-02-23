@@ -23,7 +23,8 @@ export const action = async ({ request }) => {
 
   const message = await response.json();
   if (message.email & message.password) {
-    setCookie({ email: true, login: true });
+    localStorage.setItem("userInfo", JSON.stringify(message.user));
+    setCookie({ email: true, login: true});
     return redirect("/home");
   }
 

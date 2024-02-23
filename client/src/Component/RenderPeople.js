@@ -1,6 +1,7 @@
-import { getCookie } from "../theCookie";
+
 import { FaRegStar } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
+import { localStorageResult } from "../theLocalStorage"; 
 
 export const loader = async () => {
   try {
@@ -15,9 +16,15 @@ export const loader = async () => {
 };
 
 export default function RenderPeople() {
-  const theCookieEmail = getCookie().email;
+  const theLocStoUserEmail = localStorageResult().email;
   let people = useLoaderData();
-  people = people.filter((item) => item.email !== theCookieEmail);
+  people = people.filter((item) => {
+    if(item.email === theLocStoUserEmail){
+      return false;
+    }else{
+      return true;
+    }
+  });
   const renderPeople = people.map((person) => {
     return (
       <div key={person._id} className="people--items">
@@ -36,5 +43,7 @@ export default function RenderPeople() {
     );
   });
 
-  return <div className="home--wrapper">{renderPeople}</div>;
+  return <div className="render--people--wrapper">
+    {renderPeople}
+    </div>;
 }

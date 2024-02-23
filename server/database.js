@@ -1,7 +1,10 @@
 const { MongoClient } = require("mongodb");
 
-const url =
-  "mongodb+srv://alshiaditya1996:Qwerty123@cluster0.lrlvhzp.mongodb.net/?retryWrites=true&w=majority";
+const dotenv = require('dotenv');
+dotenv.config();
+
+const themongoURl = process.env.MONGO_DB_CONNECTION_STRING;
+const url = themongoURl;
 const client = new MongoClient(url);
 
 module.exports.registerPerson = async (registerPerson) => {
@@ -52,7 +55,19 @@ module.exports.validateLogin = async (query) => {
     } else if (person.password !== query.password) {
       return { message: "Found", email: true, password: false };
     } else {
-      return { message: "Found", email: true, password: true };
+      return { 
+        message: "Found", 
+        email: true, 
+        password: true,
+        user:{
+          id : person._id,
+          firstName: person.firstName,
+          lastName: person.lastName,
+          email: person.email,
+          phoneNumber: person.phoneNumber,
+          profilePicture: person.profilePicture? person.profilePicture: ''
+        }
+      };
     }
   } catch (err) {
     console.log(err.message);
@@ -60,3 +75,43 @@ module.exports.validateLogin = async (query) => {
     await client.close();
   }
 };
+
+
+module.exports.updatePerson = async(filter, updateDoc)=>{
+  try{
+    await client.connect();
+    const jcBankdb = await client.db("jcBankdb");
+    const jcbankCollection = await jcBankdb.collection("jcbankCollection");
+  
+    const result = await jcbankCollection.updateOne(filter, updateDoc);
+    const editedUser = await jcbankCollection.findOne(filter);
+
+    return {
+      message: result.matchedCount,
+      user:{
+        id : editedUser._id,
+        firstName: editedUser.firstName,
+        lastName: editedUser.lastName,
+        email: editedUser.email,
+        phoneNumber: editedUser.phoneNumber,
+        profilePicture: editedUser.profilePicture? editedUser.profilePicture: ''
+      }
+    }
+  }catch(err){
+    console.log(err.message);
+  }finally{
+    await client.close();
+  }
+}
+
+module.exports.uploadImage = async ()=>{
+    try{
+      await client.connect();
+      const jcBankdb = await client.db("jcBankdb");
+      return jcBankdb;
+    }catch(err){
+      console.log(err)
+    }finally{
+      await client.close();
+    }
+}
