@@ -6,7 +6,7 @@ export default function Intro() {
   return (
     <div className="intro--wrapper">
       <Login />
-      <p>
+      <p className="intro--message">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
         blanditiis rem quia perferendis, dicta alias excepturi repudiandae sunt
         quasi iusto optio eligendi, quam incidunt aperiam iste dolor fugiat

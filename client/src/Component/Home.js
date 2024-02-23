@@ -16,16 +16,12 @@ export const action = async () => {
 
 export default function Home() {
   return (
-    <>
+    <div className="the-home-component-wrapper">
       <Form method="post" className="home--logout--button" replace>
         <button type="submit">Logout</button>
       </Form>
       <div className="home--section">
         <aside className="home--sidebar">
-          <Link className="home--sidebar--links home--profile--link" to={"userProfile"}>
-            <CgProfile className="home--sidebar--icon home--profile--icon" />
-            <span className="home--sidebar--Text">Profile</span>
-          </Link>
           <Link
             className="home--sidebar--links home--renderPeople--link"
             to={""}
@@ -33,9 +29,18 @@ export default function Home() {
             <LiaUserFriendsSolid className="home--sidebar--icon render--people--icon" />
             <span className="home--sidebar--Text">People</span>
           </Link>
+          <Link
+            className="home--sidebar--links home--profile--link"
+            to={"userProfile"}
+          >
+            <CgProfile className="home--sidebar--icon home--profile--icon" />
+            <span className="home--sidebar--Text">Profile</span>
+          </Link>
         </aside>
-        <Outlet className="home--outlet" />
+        <div className="home--outlet">
+          <Outlet />
+        </div>
       </div>
-    </>
+    </div>
   );
 }

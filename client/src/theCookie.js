@@ -5,6 +5,7 @@ export const setCookie = ({email=false,login=true})=>{
 
 export const getCookie = ()=>{
     const thereturnCook = document.cookie;
+    // console.log(thereturnCook);
     const cookArr = thereturnCook.split('; ')
     const modifiedCook = cookArr.map(item =>item.split('='));
     // console.log(modifiedCook);
@@ -13,7 +14,7 @@ export const getCookie = ()=>{
     const finalCookieData = JSON.parse(CookieDataStringyfied,(key, value)=>{
         if(value === "true") return true
         else if(value === "false") return false;
-        return value
+        return value;
     })
     // 
     return finalCookieData;
